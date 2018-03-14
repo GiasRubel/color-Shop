@@ -19,12 +19,23 @@ Route::group(['prefix' => 'admins'], function () {
 
 	Route::resource('/brand', 'admin\brandController');
 
+	Route::get('/login', 'admin\adminController@showLoginForm')->name('admin.dashboard');
+	Route::post('/login', 'admin\adminController@login')->name('admin.login');
+	Route::post('/logout', 'admin\adminController@logout')->name('admin.logout');
+
+	Route::get('/home', function(){
+		return view('admin.home');
+	});
 	Route::get('/', function () {
 	    return view('admin.home');
 	})->name('admins.home');
 
 });
 
-
+Route::get('/single-product/{id}', 'user\UserController@show')->name('product.single');
 
 Route::get('/','user\UserController@index')->name('user.home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

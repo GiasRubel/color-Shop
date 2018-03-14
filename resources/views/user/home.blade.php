@@ -128,8 +128,8 @@
 								<div class="productinfo text-center">
 									<img src="{{ asset('storage/'. $product->image) }}" alt="" width="268px" height="249px" />
 									<h2>{{$product->price}}</h2>
-									<p>{{$product->name}}</p>
-									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+									<a href="{{ route('product.single',$product->id) }}"><p>{{$product->name}}</p></a>
+									<a href="{{ route('product.single',$product->id) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 								</div>
 							</div>
 

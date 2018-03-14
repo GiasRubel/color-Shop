@@ -9,7 +9,7 @@
 	@section('head')
 	@show
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="@yield('bmsg','hold-transition skin-blue sidebar-mini')">
 
 <div class="wrapper">
 

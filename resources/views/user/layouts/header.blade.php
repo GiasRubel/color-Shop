@@ -63,7 +63,32 @@
 								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+								{{-- <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li> --}}
+								@if (Route::has('login'))
+								@auth
+									<li class="nav-item dropdown">
+
+		                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		                                   <i class="fa fa-user" aria-hidden="true"></i> {{ Auth::user()->name }} <span class="caret"></span>
+		                                </a>
+		                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		                                    <a class="dropdown-item" style="margin-left:7px;" href="{{ route('logout') }}"
+		                                       onclick="event.preventDefault();
+		                                                     document.getElementById('logout-form').submit();">
+		                                        Logout
+		                                    </a>
+
+		                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+		                                        @csrf
+		                                    </form>
+		                                </div>
+		                            </li>
+								@else
+									<li><a href="{{ route('login') }}"><i class="fa fa-lock"></i> Login</a></li>
+									{{-- <li><a href="{{ route('register') }}"><i class="fa fa-cog"></i></i> Register</a></li> --}}
+
+								@endauth
+								@endif
 							</ul>
 						</div>
 					</div>
@@ -92,7 +117,18 @@
 										<li><a href="product-details.html">Product Details</a></li> 
 										<li><a href="checkout.html">Checkout</a></li> 
 										<li><a href="cart.html">Cart</a></li> 
-										<li><a href="login.html">Login</a></li> 
+										{{-- <li><a href="login.html">Login</a></li>  --}}
+										 @if (Route::has('login'))
+							                <div class="top-right links">
+							                    @auth
+							                        {{-- <a href="{{ url('/home') }}">Home</a> --}}
+							                        <li><a href="{{ url('/home') }}">Home</a></li> 
+							                    @else
+							                        <li><a href="{{ route('login') }}">Login</a></li> 
+							                        <li><a href="{{ route('register') }}">Register</a></li>
+							                    @endauth
+							                </div>
+							            @endif
                                     </ul>
                                 </li> 
 								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
