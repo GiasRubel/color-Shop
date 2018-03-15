@@ -111,6 +111,10 @@
 						</div> --}}
 
 					</div>
+				
+				
+			
+				
 					<div class="col-sm-7">
 						<div class="product-information"><!--/product-information-->
 							{{-- <img src="images/product-details/new.jpg" class="newarrival" alt="" /> --}}
@@ -120,11 +124,21 @@
 							<span>
 								<span>US ${{$product->price}}</span>
 								<label>Quantity:</label>
-								<input type="text" value="3" />
-								<button type="button" class="btn btn-fefault cart">
-									<i class="fa fa-shopping-cart"></i>
-									Add to cart
-								</button>
+
+								<form action="{{ route('cart', $product->id) }}" method="post">
+									@csrf
+
+									<input type="text" name="qty" value="3"  />
+									<input type="hidden"  name="userId" value="
+												@if (Auth::check())
+												{{ Auth::user()->id}}
+											@endif"/>
+									<button type="Submit" class="btn btn-fefault cart">
+										<i class="fa fa-shopping-cart"></i>
+										Add to cart
+									</button>
+								</form>
+
 							</span>
 							<p><b>Availability:</b> In Stock</p>
 							<p><b>Condition:</b> New</p>

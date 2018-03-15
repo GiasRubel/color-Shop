@@ -32,6 +32,8 @@ Route::group(['prefix' => 'admins'], function () {
 
 });
 
+Route::post('/cart/{id}', 'user\CartController@addCart')->name('cart');
+
 Route::get('/single-product/{id}', 'user\UserController@show')->name('product.single');
 
 Route::get('/','user\UserController@index')->name('user.home');
