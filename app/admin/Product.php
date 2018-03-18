@@ -16,4 +16,9 @@ class Product extends Model
     {
         return $this->belongsTo('App\admin\Brand');
     }
+
+    //  public function carts()
+    // {
+    // 	return $this->hasMany('App\Cart');
+    // }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Routing\intended;
 use Illuminate\Support\Facades\Auth;
 
 class RedirectIfAuthenticated
@@ -26,7 +27,10 @@ class RedirectIfAuthenticated
             
             default:
                 if (Auth::guard($guard)->check()) {
-                return redirect('/home');
+                // return redirect('/home');
+                 // return redirect('/');
+                    // return redirect()->back();
+                    return redirect()->intended('/');
                 }
                 break;
         }

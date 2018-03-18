@@ -22,12 +22,14 @@ class UserController extends Controller
     public function show($id)
     {
     	$product = Product::find($id);
+    	// return $product;
+    	// $product = Product::where('id', $id)->get();
 
-    	$image = asset('storage/'.$product->image);
+    	// $image = asset('storage/'.$product->image);
     	$catagories = Catagory::orderby('id', 'desc')->take(10)->get();
     	$brands     = Brand::orderby('id', 'desc')->take(10)->get();
 
-
-    	return view('user.singleProduct', compact('product','catagories','brands','image'));
+    	// return view('user.singleProduct')->with('product', $product)->with('catagories', $catagories)->with('brands', $brands);
+    	return view('user.singleProduct')->with(compact('product','catagories','brands'));
     }
 }

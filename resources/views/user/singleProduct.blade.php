@@ -27,8 +27,8 @@
 								<div class="panel-body">
 									
 									<ul>
-										@foreach ($catagory->products as $product)
-											<li><a href="#">{{$product->name}} </a></li>
+										@foreach ($catagory->products as $pro)
+											<li><a href="#">{{$pro->name}} </a></li>
 										@endforeach
 									</ul>
 									
@@ -75,7 +75,7 @@
 				<div class="product-details"><!--product-details-->
 					<div class="col-sm-5">
 						<div class="view-product">
-							<img src="{{ $image }}" alt="" />
+							<img src="{{ asset('storage/'. $product->image) }}" alt="" />
 
 							{{-- <h3>ZOOM</h3> --}}
 						</div>
@@ -119,16 +119,17 @@
 						<div class="product-information"><!--/product-information-->
 							{{-- <img src="images/product-details/new.jpg" class="newarrival" alt="" /> --}}
 							<h2>{{$product->name}}</h2>
-							<p>Web ID: 1089772</p>
+							<p>WebId:{{$product->id}}</p>
 							{{-- <img src="images/product-details/rating.png" alt="" /> --}}
 							<span>
 								<span>US ${{$product->price}}</span>
 								<label>Quantity:</label>
 
-								<form action="{{ route('cart', $product->id) }}" method="post">
+								<form  method="POST" action="{{ route('cart', $product->id) }}">
 									@csrf
+									@method('post')
 
-									<input type="text" name="qty" value="3"  />
+									<input type="number"  min="1" name="qty" value="3"  />
 									<input type="hidden"  name="userId" value="
 												@if (Auth::check())
 												{{ Auth::user()->id}}
@@ -138,6 +139,9 @@
 										Add to cart
 									</button>
 								</form>
+								@if (session()->has('massage'))
+								    <p class="alert-danger">{{session()->get('massage')}}</p>
+								@endif
 
 							</span>
 							<p><b>Availability:</b> In Stock</p>

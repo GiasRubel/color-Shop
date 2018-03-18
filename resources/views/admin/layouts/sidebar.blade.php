@@ -29,6 +29,7 @@
           <li class=""><a href="{{ route('product.index') }}"><i class="fa fa-circle-o"></i> Products</a></li>
           <li class=""><a href="{{ route('catagory.index') }}"><i class="fa fa-circle-o"></i> Catagory</a></li>
           <li class=""><a href="{{ route('brand.index') }}"><i class="fa fa-circle-o"></i> Brand</a></li>
+          <li class=""><a href="{{ route('country.index') }}"><i class="fa fa-circle-o"></i> Country</a></li>
       </li>
       
       
