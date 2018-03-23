@@ -30,6 +30,8 @@
           <li class=""><a href="{{ route('catagory.index') }}"><i class="fa fa-circle-o"></i> Catagory</a></li>
           <li class=""><a href="{{ route('brand.index') }}"><i class="fa fa-circle-o"></i> Brand</a></li>
           <li class=""><a href="{{ route('country.index') }}"><i class="fa fa-circle-o"></i> Country</a></li>
+          <li class=""><a href="{{ route('city.index') }}"><i class="fa fa-circle-o"></i> City</a></li>
+          <li class=""><a href="{{ route('admin.orderlist') }}"><i class="fa fa-circle-o"></i> Order List</a></li>
       </li>
       
       

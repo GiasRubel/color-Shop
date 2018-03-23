@@ -26,6 +26,7 @@ class CartController extends Controller
 					->where('user_id', $uid)
 					->get();
 					// return $carts;
+
 		$sum = 0;
 
 		foreach ($carts as $cart ) {
@@ -92,7 +93,7 @@ class CartController extends Controller
 			]);
 
     	$cart = Cart::find($id);
-
+    	// return $cart;
     	$cart->quantity = $request->qty;
 
     	$cart->save();

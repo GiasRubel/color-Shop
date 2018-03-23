@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Product')
+@section('title', 'Order-list')
 
 @section('head')
 	<link rel="stylesheet" href="{{ asset('admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
@@ -33,7 +33,7 @@
         <div class="box">
           <div class="box-header">
             <h3 class="box-title">Data Table With Product List</h3>
-            <a href="{{ route('product.create') }}" class="col-lg-offset-4 btn btn-success btn-sm">Add new</a>
+            {{-- <a href="{{ route('product.create') }}" class="col-lg-offset-4 btn btn-success btn-sm">Add new</a> --}}
           </div>
           @if (session()->has('massage'))
               <h4 class="alert alert-success">{{session()->get('massage')}}</h4>
@@ -44,49 +44,53 @@
               <thead>
               <tr>
               	<th width="1%">Serial no</th>
-                <th>Name</th>
-                <th width="5%">Detail</th>
-                <th>Catagory</th>
-                <th>Brand</th>
-                <th>Price</th>
-                <th>Vat</th>
-                <th>Shipping</th>
+                <th>product Name</th>
                 <th>Image</th>
-                <th>Edit</th>
+                <th width="5%">Price</th>
+                <th>vat</th>
+                <th>Shipping</th>
+                <th>Customer name</th>
+                <th>Adress</th>
+                <th>city</th>
+                <th>country</th>
+                <th>Status</th>
                 <th>DElete</th>
-                <th>Creat</th>
+                <th>Order Time</th>
+                
                 
               </tr>
               </thead>
               <tbody>
-
-              	@foreach ($products as $product)
+           {{--  @foreach ($orders as $order)
+              {{$order->products["name"]}}
+            @endforeach --}}
+              	@foreach ($orders as $order)
               	<tr>
 	                <td>{{$loop->index + 1}}</td>
-                  <td><a href="{{ route('product.show', $product->id) }}">{{$product->name}}</a></td>
-                  <td>{!! substr(htmlspecialchars_decode($product->details),0,50)!!}{{strlen( $product->details ) > 50 ? "..." : ''}}</td>
-                  <td>{{-- {{$product->catagory->name}} --}}
-                        
-                    @foreach ($product->catagory as $cat)
-                      {{-- {{$loop->first ? '' : ','}} --}}
-                      {{ $cat->name }}{{!$loop->last ? ',' : ''}}
-                    @endforeach
-
-                  </td>
-                  <td>{{$product->brand['name']}}</td>
-                  <td>{{$product->price}}</td>
-                  <td>{{$product->vat}}%</td>
-                  <td>{{$product->shippingcost}}</td>
-	                <td><img src="{{ asset('storage/'. $product->image) }}" alt="{{$product->name}}" width="80px" height="60"></td>
-	                <td><a href="{{ route('product.edit', $product->id) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-	                <td>{{-- <a href=""><i class="fa fa-trash-o"></i></a> --}}
-				  	<form class="form-group " action="{{ route('product.destroy', $product->id) }}" method="post">
-				  	@method('DELETE')
-            @csrf				  		
-				  		<button type="submit" style="border: none;" onclick="return confirm('Are You sure');"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-					</form>
+                  <td><a href="{{ route('adminorder.show', $order->id) }}">{{$order->products->name}}</a></td>
+                  <td><img src="{{ asset('storage/'. $order->products->image) }}" alt="{{$order->products->name}}" width="80px" height="60"></td>
+                  <td>{{$order->products->price}}</td>
+                  <td>{{$order->products->vat}}</td>
+                  <td>{{$order->products->shippingcost}}</td>
+                  <td>{{$order->name}}</td>
+                  <td>{{$order->adress}}%</td>
+                  <td>{{$order->city->name}}</td>
+                  <td>{{$order->country->name}}</td>
+	                <td>
+                   @if ($order->status == 0)
+                     <span style="">pending</span>
+                     @else
+                     <span style="background-color: yellow;">Granted</span>
+                   @endif
+                    </td>
+	                <td>
+              		  	<form class="form-group " action="{{ route('order.delete', $order->id) }}" method="post">
+              		  	@method('DELETE')
+                      @csrf				  		
+              		  		<button type="submit" style="border: none;" onclick="return confirm('Are You sure');"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+              			 </form>
 	                </td>
-	                <td>{{$product->created_at->diffForHumans()}}</td>
+	                <td>{{$order->created_at->diffForHumans()}}</td>
 	             </tr>
               	@endforeach
               
