@@ -13,7 +13,7 @@
   <section class="content-header">
 
     <h1>
-      Product Table
+      Order Table
       <small>advanced tables</small>
     </h1>
   
@@ -32,7 +32,7 @@
 
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Data Table With Product List</h3>
+            <h3 class="box-title">Data Table With Order List</h3>
             {{-- <a href="{{ route('product.create') }}" class="col-lg-offset-4 btn btn-success btn-sm">Add new</a> --}}
           </div>
           @if (session()->has('massage'))
