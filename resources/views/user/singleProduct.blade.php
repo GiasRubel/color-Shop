@@ -122,27 +122,38 @@
 							<p>WebId:{{$product->id}}</p>
 							{{-- <img src="images/product-details/rating.png" alt="" /> --}}
 							<span>
-								<span>US ${{$product->price}}</span>
-								<label>Quantity:</label>
+								<span>US ${{$product->price}}</span><br>
+								@if (Auth::user())
+								<div class="cartdiv">
+										{{-- <label>Quantity:</label> --}}
 
-								<form  method="POST" action="{{ route('cart', $product->id) }}">
-									@csrf
-									@method('post')
+										<form  method="POST" action="{{ route('cart', $product->id) }}">
+											@csrf
+											@method('post')
 
-									<input type="number"  min="1" name="qty" value="3"  />
-									<input type="hidden"  name="userId" value="
-												@if (Auth::check())
-												{{ Auth::user()->id}}
-											@endif"/>
-									<button type="Submit" class="btn btn-fefault cart">
-										<i class="fa fa-shopping-cart"></i>
-										Add to cart
-									</button>
-								</form>
+											<input type="number"  min="1" name="qty" value="1" style="margin-left: -135px;margin-top: 30px;" />
+											<input type="hidden"  name="userId" value="
+														@if (Auth::check())
+														{{ Auth::user()->id}}
+													@endif"/>
+											<button type="Submit" class="btn btn-fefault cart">
+												<i class="fa fa-shopping-cart"></i>
+												Add to cart
+											</button>
+										</form>
+										
+										<form  style="margin-left: 177px;margin-top: -43px;" method="POST" action="{{ route('wish.update', $product->id) }}">
+											@csrf
+											<button type="Submit" class="btn btn-fefault cart">
+												<i class="fa fa-heart"></i>
+												Add to Wish
+											</button>
+										</form>
+									@endif
+								</div>
 								@if (session()->has('massage'))
-								    <p class="alert-danger">{{session()->get('massage')}}</p>
-								@endif
-
+										    <p class="alert-danger">{{session()->get('massage')}}</p>
+										@endif
 							</span>
 							<p><b>Availability:</b> In Stock</p>
 							<p><b>Condition:</b> New</p>

@@ -55,6 +55,12 @@ Route::put('/cart/{id}', 'user\CartController@update')->name('cart.update');
 
 Route::delete('/cart/{id}', 'user\CartController@destroy')->name('cart.delete');
 
+Route::post('/wish/{id}','user\WishController@wishUpdate')->name('wish.update');
+
+Route::get('wish-list', 'user\WishController@index')->name('wish.index');
+
+Route::delete('/wish/{id}', 'user\WishController@destroy')->name('wish.destroy');
+
 Route::get('/order', 'user\OrderController@show')->name('order.show');
 
 Route::get('/order/get/{id}', 'user\OrderController@getcity');
@@ -62,6 +68,8 @@ Route::get('/order/get/{id}', 'user\OrderController@getcity');
 Route::post('/order', 'user\OrderController@store')->name('order.store');
 
 Route::get('/order-list','user\OrderController@list')->name('order.list');
+
+Route::delete('/order/{id}', 'user\OrderController@destroy')->name('order.destroy');
 
 Route::get('/single-product/{id}', 'user\UserController@show')->name('product.single');
 

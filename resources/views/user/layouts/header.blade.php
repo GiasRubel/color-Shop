@@ -60,7 +60,11 @@
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
 								{{-- <li><a href="#"><i class="fa fa-user"></i> Account</a></li> --}}
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
+								<li><a href="{{ route('wish.index') }}"><i class="fa fa-star"></i> Wishlist
+									@if ($wish_count)
+										<span class="badge badge-light">{{$wish_count}}</span>
+									@endif
+								</a></li>
 								<li><a href="{{ route('order.list') }}"><i class="fa fa-crosshairs"></i> Order List</a></li>
 								<li>
 									<a href="{{ route('user.cart') }}"><i class="fa fa-shopping-cart"></i> Cart

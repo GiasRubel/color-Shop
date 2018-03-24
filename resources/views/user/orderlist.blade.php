@@ -25,7 +25,7 @@
 						<td class="total" width="15%">Quantity</td>
 						<td class="total">Total</td>
 						<td class="total">Status</td>
-						<td class="total">Action</td>
+						{{-- <td class="total">Action</td> --}}
 						
 						<td></td>
 					</tr>
@@ -59,21 +59,26 @@
 							@if ($order->status == 0)
 								Pending
 								@else
-								permited
+								<span style="background-color: yellow;">permited</span>
 							@endif
 						</td>
+						@if ($order->status != 0)
+							{{-- expr --}}
+					
 						<td class="order_delete">
 							
-							 <form id="delorder-form" action="" method="POST">
+							 <form id="delorder-form" action="{{ route('order.destroy', $order->id) }}" method="POST">
 							 	@method('delete')
                                 @csrf
                               
                                 <button type="submit" style="border: none;" onclick="return confirm('Are You sure');">{{-- <i class="fa fa-trash-o" aria-hidden="true"></i> --}}
-									<span class="glyphicon glyphicon-trash"></span>
+									<span class="glyphicon glyphicon-remove"></span>
                                 </button>
                                
                             </form>
 						</td>
+
+					@endif
 					</tr>
 					@endforeach
 				</tbody>

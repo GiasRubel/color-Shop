@@ -110,7 +110,14 @@
 					  			    </div>
 					  			    
 					  			  </div>
-					  		{{-- </div> --}}
+										
+								  @if ($order->message)
+								  	<h2>Spacial Message:</h2>
+									  <div class="panel panel-default">
+									    <div class="panel-body">{!! htmlspecialchars_decode($order->message) !!}</div>
+									  </div>
+								  @endif
+					  			  
 					  		</div>
 					  	</div>
 					  </div>

@@ -108,6 +108,15 @@ class OrderController extends Controller
     	return view('user.orderlist', compact('orders', 'sum'));
     }
 
+    public function destroy($id)
+    {
+    	$orders = Order::find($id);
+
+    	$orders->delete();
+    	
+    	return redirect()->route('order.list');
+    }
+
     public function adminorderlist()
     {
     	$orders = Order::all();
@@ -141,6 +150,8 @@ class OrderController extends Controller
     	$order = Order::find($id);
     	return view('admin.order.singleorder', compact('order'));
     }
+
+
 
 
 }
