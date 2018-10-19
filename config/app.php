@@ -146,6 +146,8 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        // image intervantion
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -162,6 +164,7 @@ return [
 
         App\Providers\ComposerServiceProvider::class,
         App\Providers\wishserviceprovider::class,
+        App\Providers\OrderserviceProvider::class,
         
 
     ],
@@ -212,6 +215,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

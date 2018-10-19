@@ -173,10 +173,25 @@ class productController extends Controller
 
         $product->catagory()->detach();
 
+        $product->multi()->delete();
+
         $product->delete();
 
         session()->flash('massage','Data Deleted from Database');
 
         return redirect(route('product.index'));
+    }
+
+    public function catbyproduct($id)
+    {
+       $catagories = Catagory::find($id);
+
+       return view('admin.catagory.catbyproduct', compact('catagories'));
+
+       // echo  $catagories->name;
+
+       // foreach ($catagories->products as $pro) {
+       //     echo $pro->name;
+       // }
     }
 }

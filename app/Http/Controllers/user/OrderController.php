@@ -40,7 +40,7 @@ class OrderController extends Controller
 
 		$countries = Country::all();
 
-    	return view('user.order', compact('carts', 'sum', 'countries'));
+    	return view('new_view.order', compact('carts', 'sum', 'countries'));
     }
 
     public function getcity($id)
@@ -53,6 +53,7 @@ class OrderController extends Controller
 
     public function store(Request $request)
     {
+        // return $request->all();
     	$this->validate($request, [
     			'name'      =>'required|min:2',
     			'email'     =>'required',
@@ -105,7 +106,7 @@ class OrderController extends Controller
 
     		$sum = $sum + $total;
     	}
-    	return view('user.orderlist', compact('orders', 'sum'));
+    	return view('new_view.orderlist', compact('orders', 'sum'));
     }
 
     public function destroy($id)

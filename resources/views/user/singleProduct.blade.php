@@ -2,6 +2,14 @@
 
 @section('title', 'Single Product')
 
+@section('css')
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
+@endsection
+
 @section('body')
 
 <section>
@@ -344,6 +352,7 @@
 									</span>
 									<textarea name="" ></textarea>
 									<b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
+
 									<button type="button" class="btn btn-default pull-right">
 										Submit
 									</button>
@@ -448,6 +457,46 @@
 			</div>
 		</div>
 	</div>
+	<div class="container">
+
+		<h2>Bootstrap star rating example</h2>
+
+	    <br/>
+
+	    <label for="input-1" class="control-label">Give a rating for Skill:</label>
+
+	    <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="2">
+
+	    <br/>
+
+	    <label for="input-2" class="control-label">Give a rating for Knowledge:</label>
+
+	    <input id="input-2" name="input-2" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="4">
+
+	    <br/>
+
+	    <label for="input-3" class="control-label">Give a rating for PHP:</label>
+	<?php
+
+	if (isset($_POST['submit'])) {
+	   $name = $_POST['input-3'];
+	      echo $name;
+	}
+	?>
+	<form action="" method="post">
+	    <input id="input-3" name="input-3" class="rating rating-loading" data-min="0" data-max="5" data-step="0.1" value="5">
+	    <button type="submit" name="submit">submit</button>
+	</form>
+	</div>
 </section>
 
+@endsection
+
+@section('js')
+	
+    <script>
+
+    $("#input-id").rating();
+
+    </script>
 @endsection

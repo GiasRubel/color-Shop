@@ -23,19 +23,24 @@ class WishController extends Controller
 
 		$wishes = Wishlist::where('user_id', $uid)->get();
 		$orders = Order::all();
-		return view('user.wishlist', compact('orders','wishes'));
+		return view('new_view.wishlist', compact('orders','wishes'));
 	}
 
 
-    public function wishUpdate($id)
+    public function wishUpdate(Request $request, $id)
     {
-    	$uid = Auth::user()->id;
+        // return $request->all();
+    	// $uid = Auth::user()->id;
+        $uid = $request->uId;
 
-    	$chkwish = Wishlist::where('product_id', $id)->count();
+    	$chkwish = Wishlist::where('product_id', $id)->where('user_id', $uid)->count();
+
+        // return $chkwish;
 
     	if ($chkwish>0) {
-    		session()->flash('massage','**Already Added in Wish**');
-    		return redirect()->back();
+    		// session()->flash('massage','**Already Added in Wish**');
+    		// return redirect()->back();
+            return 'already added';
     	}
     	else{
 
@@ -47,7 +52,8 @@ class WishController extends Controller
 
 	    	$wish->save();
 
-	    	return redirect()->route('wish.index');
+	    	// return redirect()->route('wish.index');
+            return 'done';
     	}
 
     	
@@ -59,8 +65,8 @@ class WishController extends Controller
 
     	$wish->delete();
 
-    	return redirect()->route('wish.index');
-
+    	// return redirect()->route('wish.index');
+        return 'Delete done';
     }
 
 

@@ -32,6 +32,7 @@
           <li class=""><a href="{{ route('country.index') }}"><i class="fa fa-circle-o"></i> Country</a></li>
           <li class=""><a href="{{ route('city.index') }}"><i class="fa fa-circle-o"></i> City</a></li>
           <li class=""><a href="{{ route('admin.orderlist') }}"><i class="fa fa-circle-o"></i> Order List</a></li>
+          <li class=""><a href="{{ route('slide.list') }}"><i class="fa fa-circle-o"></i> Slider</a></li>
       </li>
       
       

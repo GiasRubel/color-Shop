@@ -69,7 +69,7 @@
 								<li>
 									<a href="{{ route('user.cart') }}"><i class="fa fa-shopping-cart"></i> Cart
 										@if ($cart_count)
-											<span class="badge badge-light">{{$cart_count}}</span>
+											<span class="badge badge-light">{{$cart_count}} </span>
 										@endif
 								 	</a>
 								</li>

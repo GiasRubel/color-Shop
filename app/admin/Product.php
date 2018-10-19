@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+
+    protected $guarded = [];
+    
     public function catagory()
     {
         return $this->belongsToMany('App\admin\Catagory', 'catagory_product')->withTimestamps();
@@ -15,6 +18,11 @@ class Product extends Model
     public function brand()
     {
         return $this->belongsTo('App\admin\Brand');
+    }
+
+    public function multi()
+    {
+        return $this->hasMany(MultiImage::class, 'product_id');
     }
 
     //  public function carts()

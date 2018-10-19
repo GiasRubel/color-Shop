@@ -84,7 +84,7 @@
 				  	@method('DELETE')
             @csrf				  		
 				  		<button type="submit" style="border: none;" onclick="return confirm('Are You sure');"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-					</form>
+					  </form>
 	                </td>
 	                <td>{{$product->created_at->diffForHumans()}}</td>
 	             </tr>

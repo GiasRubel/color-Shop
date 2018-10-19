@@ -35,13 +35,13 @@ class CartController extends Controller
 			$sum = $sum + $total;
 		}
 			// return $sum;
-		return view('user.cart', compact('carts', 'sum'));
+		return view('new_view.cart', compact('carts', 'sum'));
 	}
 
 
     public function addCart(Request $request, $id)
     {
-  		//echo $id;
+  		// return $id;
 		// return $request->all();
 
 		$sid = session()->getId();
@@ -78,8 +78,8 @@ class CartController extends Controller
 
 			$cart->save();
 
-			return redirect()->route('user.cart');
-			// return redirect()->back();
+			// return redirect()->route('user.cart');
+			return redirect()->back();
 		}
 		
     	
@@ -89,25 +89,33 @@ class CartController extends Controller
     {
     	// return $request->all();
     	$this->validate($request, [
-				'qty' => 'required|max:4',
+				'quantity' => 'required|max:4',
 			]);
 
-    	$cart = Cart::find($id);
+    	$cId = $request->cId;
+
+    	$cart = Cart::find($cId);
     	// return $cart;
-    	$cart->quantity = $request->qty;
+    	$cart->quantity = $request->quantity;
 
     	$cart->save();
 
-    	return redirect()->route('user.cart');
+    	// return redirect()->route('user.cart');
+
+    	return 'done';
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+    	$id = $request->id;
+
     	$cart = Cart::find($id);
 
     	$cart->delete();
 
-    	return redirect()->route('user.cart');
+    	return 'done';
+
+    	// return redirect()->route('user.cart');
     }
 
 
